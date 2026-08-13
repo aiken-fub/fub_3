@@ -87,3 +87,40 @@ Hybrid + Reranker > CRAG > Multi-query > HyDE
 如果你要跟副總解釋，我會把核心訊息定義成：大型通用 AI 搜尋服務因面對 Open-domain、未知資料來源與複雜 research query，需要較完整的 planning、multi-query、iterative search 與 reflection；企業知識檢索則是 bounded-domain retrieval。在受控且高品質的企業 corpus 中，研究顯示 Hybrid Retrieval、Reranking、Metadata/Context 與 Query Rewrite 即可取得非常具競爭力的結果；只有在 multi-hop、證據不足或跨來源推理等情境下，再啟動 Agentic Retrieval。因此自建 Agentic RAG 的合理方向不是複製大型通用搜尋架構，而是建立『可選擇性升級』的 Adaptive Retrieval 架構。」
 
 
+
+                  User Question
+                        ↓
+               Semantic Understanding
+                        ↓
+              Query Strategy Planning
+                        ↓
+        ┌───────────────┼───────────────┐
+        ↓               ↓               ↓
+ Query Rewrite    Query Expansion   Decomposition
+        ↓               ↓               ↓
+      Query 1         Query 2        Sub-Q1/Q2
+        │               │               │
+        └───────────────┼───────────────┘
+                        ↓
+                Multi-Retriever
+       ┌────────────────┼─────────────────┐
+       ↓                ↓                 ↓
+     BM25          Dense Vector      Learned Sparse
+       │                │                 │
+       └────────────────┼─────────────────┘
+                        ↓
+                  Candidate Pool
+                        ↓
+                Fusion / Filtering
+                        ↓
+                Strong Reranker
+                        ↓
+              Evidence Validation
+                        ↓
+           足夠？ ─ No → 再搜尋
+             │
+            Yes
+             ↓
+          Generation
+
+
