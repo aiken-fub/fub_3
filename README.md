@@ -61,3 +61,29 @@ LLM
 那麼跟大型 hosted retrieval service 比，真正的差距很可能不在「Hybrid Search 這四個字」，而是在 Hybrid Search 前後到底還有多少層策略。
 
 
+問題
+
+「大型通用 AI 搜尋服務因面對 Open-domain、未知資料來源與複雜 research query，需要較完整的 planning、multi-query、iterative search 與 reflection；企業知識檢索則是 bounded-domain retrieval。在受控且高品質的企業 corpus 中，研究顯示 Hybrid Retrieval、Reranking、Metadata/Context 與 Query Rewrite 即可取得非常具競爭力的結果；只有在 multi-hop、證據不足或跨來源推理等情境下，再啟動 Agentic Retrieval。因此自建 Agentic RAG 的合理方向不是複製大型通用搜尋架構，而是建立『可選擇性升級』的 Adaptive Retrieval 架構。」
+
+
+
+大型通用 AI 搜尋服務因面對 Open-domain、未知資料來源與複雜 research query，需要較完整的 planning、multi-query、iterative search 與 reflection；企業知識檢索則是 bounded-domain retrieval。在受控且高品質的企業 corpus 中，研究顯示 Hybrid Retrieval、Reranking、Metadata/Context 與 Query Rewrite 即可取得非常具競爭力的結果；只有在 multi-hop、證據不足或跨來源推理等情境下，再啟動 Agentic Retrieval。因此自建 Agentic RAG 的合理方向不是複製大型通用搜尋架構，而是建立『可選擇性升級』的 Adaptive Retrieval 架構。」
+
+研究結果正在支持一個很重要的觀點：RAG 並不是 Agentic 越多、Search Loop 越多、HyDE / Multi-query 越多就一定越好。對受控、特定領域 corpus，設計良好的 Hybrid Retrieval + Reranker，甚至可能比更複雜的 Agentic / Adaptive Retrieval 更好。
+
+1. 最適合你拿來當證據：金融資料上，Hybrid + Rerank 反而打贏很多複雜方法
+
+2026 年的 From BM25 to Corrective RAG: Benchmarking Retrieval Strategies for Text-and-Table Documents，直接在金融 QA benchmark 上比較 10 種 retrieval strategy，包含 BM25、Dense、Hybrid、HyDE、Multi-Query、Contextual Retrieval、CRAG（Corrective RAG）與 Reranking。資料規模是 23,088 個 queries、7,318 個文件
+
+
+Hybrid + Reranker > CRAG > Multi-query > HyDE
+
+
+
+而且差距不是很小。Hybrid + Reranker 的 Recall@5 達到 0.816，MRR@3 為 0.605；論文作者指出它大幅超過所有 single-stage 方法
+
+
+
+如果你要跟副總解釋，我會把核心訊息定義成：大型通用 AI 搜尋服務因面對 Open-domain、未知資料來源與複雜 research query，需要較完整的 planning、multi-query、iterative search 與 reflection；企業知識檢索則是 bounded-domain retrieval。在受控且高品質的企業 corpus 中，研究顯示 Hybrid Retrieval、Reranking、Metadata/Context 與 Query Rewrite 即可取得非常具競爭力的結果；只有在 multi-hop、證據不足或跨來源推理等情境下，再啟動 Agentic Retrieval。因此自建 Agentic RAG 的合理方向不是複製大型通用搜尋架構，而是建立『可選擇性升級』的 Adaptive Retrieval 架構。」
+
+
