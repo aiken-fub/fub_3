@@ -122,5 +122,5 @@ Hybrid + Reranker > CRAG > Multi-query > HyDE
             Yes
              ↓
           Generation
-
+參考大型通用 AI 的先進檢索技術，但不直接複製其複雜架構；在企業知識檢索則是受控下依最新技術研究下，採Adaptive方式，持續優化Agentic RAG能力模組。
 
