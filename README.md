@@ -1,6 +1,12 @@
 # fub_3
 https://github.com/ArthurC02/AnthropicFinancialAgents/tree/main/docs
 
+Microsoft Teams 會議 
+加入: https://teams.microsoft.com/meet/480159726074251?p=3IFSQl3pvt2Mbp1Yr3 
+會議識別碼: 480 159 726 074 251 
+密碼: LN2wC7Sx 
+
+
 檢索演算法
 
 
